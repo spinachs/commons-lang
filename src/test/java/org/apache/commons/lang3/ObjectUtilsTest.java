@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
 import java.lang.reflect.Constructor;
@@ -149,6 +150,28 @@ public class ObjectUtilsTest {
         assertNull(ObjectUtils.firstNonNull((Object[]) null));
     }
 
+    @Test
+    public void testGetFirstNonNull() {
+        // first non null
+        assertEquals("", ObjectUtils.getFirstNonNull(() -> null, () -> ""));
+        // first encountered value is used
+        assertEquals("1", ObjectUtils.getFirstNonNull(() -> null, () -> "1", () -> "2", () -> null));
+        assertEquals("123", ObjectUtils.getFirstNonNull(() -> "123", () -> null, () -> "456"));
+        // don't evaluate suppliers after first value is found
+        assertEquals("123", ObjectUtils.getFirstNonNull(() -> null, () -> "123", () -> fail("Supplier after first non-null value should not be evaluated")));
+        // supplier returning null and null supplier both result in null
+        assertNull(ObjectUtils.getFirstNonNull(null, () -> null));
+        // Explicitly pass in an empty array of Object type to ensure compiler doesn't complain of unchecked generic array creation
+        assertNull(ObjectUtils.getFirstNonNull());
+        // supplier is null
+        assertNull(ObjectUtils.getFirstNonNull((Supplier<Object>) null));
+        // varargs array itself is null
+        assertNull(ObjectUtils.getFirstNonNull((Supplier<Object>[]) null));
+        // test different types
+        assertEquals(1, ObjectUtils.getFirstNonNull(() -> null, () -> 1));
+        assertEquals(Boolean.TRUE, ObjectUtils.getFirstNonNull(() -> null, () -> Boolean.TRUE));
+    }
+
     /**
      * Tests {@link ObjectUtils#anyNotNull(Object...)}.
      */
@@ -220,7 +243,7 @@ public class ObjectUtilsTest {
 
     @Test
     public void testHashCodeMulti_multiple_likeList() {
-        final List<Object> list0 = new ArrayList<>(Arrays.asList(new Object[0]));
+        final List<Object> list0 = new ArrayList<>(Arrays.asList());
         assertEquals(list0.hashCode(), ObjectUtils.hashCodeMulti());
 
         final List<Object> list1 = new ArrayList<>(Arrays.asList("a"));

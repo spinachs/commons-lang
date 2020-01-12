@@ -16,18 +16,19 @@
  */
 package org.apache.commons.lang3.reflect;
 
-import org.apache.commons.lang3.ClassUtils;
-import org.apache.commons.lang3.JavaVersion;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.SystemUtils;
-import org.apache.commons.lang3.Validate;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.JavaVersion;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.SystemUtils;
+import org.apache.commons.lang3.Validate;
 
 /**
  * Utilities for working with {@link Field}s by reflection. Adapted and refactored from the dormant [reflect] Commons
@@ -199,7 +200,7 @@ public class FieldUtils {
      */
     public static Field[] getAllFields(final Class<?> cls) {
         final List<Field> allFieldsList = getAllFieldsList(cls);
-        return allFieldsList.toArray(new Field[allFieldsList.size()]);
+        return allFieldsList.toArray(ArrayUtils.EMPTY_FIELD_ARRAY);
     }
 
     /**
@@ -237,7 +238,7 @@ public class FieldUtils {
      */
     public static Field[] getFieldsWithAnnotation(final Class<?> cls, final Class<? extends Annotation> annotationCls) {
         final List<Field> annotatedFieldsList = getFieldsListWithAnnotation(cls, annotationCls);
-        return annotatedFieldsList.toArray(new Field[annotatedFieldsList.size()]);
+        return annotatedFieldsList.toArray(ArrayUtils.EMPTY_FIELD_ARRAY);
     }
 
     /**
@@ -714,7 +715,7 @@ public class FieldUtils {
      *            match {@code public} fields.
      * @throws IllegalArgumentException
      *             if the field is {@code null}
-     * @deprecated As of Java 12, we can no longer drop the <code>final</code> modifier, thus
+     * @deprecated As of Java 12, we can no longer drop the {@code final} modifier, thus
      *             rendering this method obsolete. The JDK discussion about this change can be found
      *             here: http://mail.openjdk.java.net/pipermail/core-libs-dev/2018-November/056486.html
      * @since 3.3

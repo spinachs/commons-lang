@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.apache.commons</groupId>
     <artifactId>commons-parent</artifactId>
-    <version>48</version>
+    <version>50</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>commons-lang3</artifactId>
@@ -522,7 +522,7 @@
     <dependency>
       <groupId>org.junit-pioneer</groupId>
       <artifactId>junit-pioneer</artifactId>
-      <version>0.3.3</version>
+      <version>0.4.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -600,7 +600,7 @@
     <commons.encoding>utf-8</commons.encoding>
 
     <checkstyle.plugin.version>3.1.0</checkstyle.plugin.version>
-    <checkstyle.version>8.26</checkstyle.version>
+    <checkstyle.version>8.27</checkstyle.version>
 
     <spotbugs.plugin.version>3.1.12.2</spotbugs.plugin.version>
     <japicmp.skip>false</japicmp.skip>
@@ -760,6 +760,13 @@
         <groupId>com.github.spotbugs</groupId>
         <artifactId>spotbugs-maven-plugin</artifactId>
         <version>${spotbugs.plugin.version}</version>
+        <dependencies>
+          <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs</artifactId>
+            <version>4.0.0-beta4</version>
+         </dependency>
+        </dependencies>        
         <configuration>
           <excludeFilterFile>${basedir}/spotbugs-exclude-filter.xml</excludeFilterFile>
         </configuration>

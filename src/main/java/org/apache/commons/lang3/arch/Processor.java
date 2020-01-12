@@ -22,6 +22,7 @@ package org.apache.commons.lang3.arch;
  *
  * 定义CPU架构和类型.
  *
+ *
  * @since 3.6
  */
 public class Processor {
@@ -34,9 +35,9 @@ public class Processor {
      * of the microprocessor.
      * The following architectures are defined:
      * <ul>
-     *     <li>32 bit</li>
-     *     <li>64 bit</li>
-     *     <li>unknown</li>
+     *     <li>32-bit</li>
+     *     <li>64-bit</li>
+     *     <li>Unknown</li>
      * </ul>
      */
     public enum Arch {
@@ -44,17 +45,37 @@ public class Processor {
         /**
          * A 32-bit processor architecture.
          */
-        BIT_32,
+        BIT_32("32-bit"),
 
         /**
          * A 64-bit processor architecture.
          */
-        BIT_64,
+        BIT_64("64-bit"),
 
         /**
          * An unknown-bit processor architecture.
          */
-        UNKNOWN
+        UNKNOWN("Unknown");
+
+        /**
+         * A label suitable for display.
+         *
+         * @since 3.10
+         */
+        private final String label;
+
+        Arch(final String label) {
+            this.label = label;
+        }
+
+        /**
+         * Gets the label suitable for display.
+         *
+         * @return the label.
+         */
+        public String getLabel() {
+            return label;
+        }
     }
 
     /**
@@ -65,8 +86,8 @@ public class Processor {
      * <ul>
      *     <li>x86</li>
      *     <li>ia64</li>
-     *     <li>ppc</li>
-     *     <li>unknown</li>
+     *     <li>PPC</li>
+     *     <li>Unknown</li>
      * </ul>
      */
     public enum Type {
@@ -132,7 +153,7 @@ public class Processor {
     /**
      * Checks if {@link Processor} is 32 bit.
      *
-     * @return <code>true</code>, if {@link Processor} is {@link Arch#BIT_32}, else <code>false</code>.
+     * @return {@code true}, if {@link Processor} is {@link Arch#BIT_32}, else {@code false}.
      */
     public boolean is32Bit() {
         return Arch.BIT_32.equals(arch);
@@ -141,7 +162,7 @@ public class Processor {
     /**
      * Checks if {@link Processor} is 64 bit.
      *
-     * @return <code>true</code>, if {@link Processor} is {@link Arch#BIT_64}, else <code>false</code>.
+     * @return {@code true}, if {@link Processor} is {@link Arch#BIT_64}, else {@code false}.
      */
     public boolean is64Bit() {
         return Arch.BIT_64.equals(arch);
@@ -150,7 +171,7 @@ public class Processor {
     /**
      * Checks if {@link Processor} is type of x86.
      *
-     * @return <code>true</code>, if {@link Processor} is {@link Type#X86}, else <code>false</code>.
+     * @return {@code true}, if {@link Processor} is {@link Type#X86}, else {@code false}.
      */
     public boolean isX86() {
         return Type.X86.equals(type);
@@ -159,7 +180,7 @@ public class Processor {
     /**
      * Checks if {@link Processor} is type of Intel Itanium.
      *
-     * @return <code>true</code>. if {@link Processor} is {@link Type#IA_64}, else <code>false</code>.
+     * @return {@code true}. if {@link Processor} is {@link Type#IA_64}, else {@code false}.
      */
     public boolean isIA64() {
         return Type.IA_64.equals(type);
@@ -168,7 +189,7 @@ public class Processor {
     /**
      * Checks if {@link Processor} is type of Power PC.
      *
-     * @return <code>true</code>. if {@link Processor} is {@link Type#PPC}, else <code>false</code>.
+     * @return {@code true}. if {@link Processor} is {@link Type#PPC}, else {@code false}.
      */
     public boolean isPPC() {
         return Type.PPC.equals(type);

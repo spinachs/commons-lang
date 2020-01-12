@@ -19,6 +19,7 @@ package org.apache.commons.lang3;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.lang.reflect.UndeclaredThrowableException;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
@@ -285,7 +286,7 @@ public class Functions {
     /**
      * Consumes a consumer and rethrows any exception as a {@link RuntimeException}.
      * @param pConsumer the consumer to consume
-     * @param pObject the object to consume by <code>pConsumer</code>
+     * @param pObject the object to consume by {@code pConsumer}
      * @param <O> the type the consumer accepts
      * @param <T> the type of checked exception the consumer may throw
      */
@@ -300,8 +301,8 @@ public class Functions {
     /**
      * Consumes a consumer and rethrows any exception as a {@link RuntimeException}.
      * @param pConsumer the consumer to consume
-     * @param pObject1 the first object to consume by <code>pConsumer</code>
-     * @param pObject2 the second object to consume by <code>pConsumer</code>
+     * @param pObject1 the first object to consume by {@code pConsumer}
+     * @param pObject2 the second object to consume by {@code pConsumer}
      * @param <O1> the type of the first argument the consumer accepts
      * @param <O2> the type of the second argument the consumer accepts
      * @param <T> the type of checked exception the consumer may throw
@@ -317,7 +318,7 @@ public class Functions {
     /**
      * Applies a function and rethrows any exception as a {@link RuntimeException}.
      * @param pFunction the function to apply
-     * @param pInput the input to apply <code>pFunction</code> on
+     * @param pInput the input to apply {@code pFunction} on
      * @param <I> the type of the argument the function accepts
      * @param <O> the return type of the function
      * @param <T> the type of checked exception the function may throw
@@ -334,8 +335,8 @@ public class Functions {
     /**
      * Applies a function and rethrows any exception as a {@link RuntimeException}.
      * @param pFunction the function to apply
-     * @param pInput1 the first input to apply <code>pFunction</code> on
-     * @param pInput2 the second input to apply <code>pFunction</code> on
+     * @param pInput1 the first input to apply {@code pFunction} on
+     * @param pInput2 the second input to apply {@code pFunction} on
      * @param <I1> the type of the first argument the function accepts
      * @param <I2> the type of the second argument the function accepts
      * @param <O> the return type of the function
@@ -353,7 +354,7 @@ public class Functions {
     /**
      * Tests a predicate and rethrows any exception as a {@link RuntimeException}.
      * @param pPredicate the predicate to test
-     * @param pObject the input to test by <code>pPredicate</code>
+     * @param pObject the input to test by {@code pPredicate}
      * @param <O> the type of argument the predicate tests
      * @param <T> the type of checked exception the predicate may throw
      * @return the boolean value returned by the predicate
@@ -369,8 +370,8 @@ public class Functions {
     /**
      * Tests a predicate and rethrows any exception as a {@link RuntimeException}.
      * @param pPredicate the predicate to test
-     * @param pObject1 the first input to test by <code>pPredicate</code>
-     * @param pObject2 the second input to test by <code>pPredicate</code>
+     * @param pObject1 the first input to test by {@code pPredicate}
+     * @param pObject2 the second input to test by {@code pPredicate}
      * @param <O1> the type of the first argument the predicate tests
      * @param <O2> the type of the second argument the predicate tests
      * @param <T> the type of checked exception the predicate may throw
@@ -433,10 +434,8 @@ public class Functions {
             errorHandler = pErrorHandler;
         }
         if (pResources != null) {
-            for (FailableRunnable<? extends Throwable> runnable : pResources) {
-                if (runnable == null) {
-                    throw new NullPointerException("A resource action must not be null.");
-                }
+            for (FailableRunnable<? extends Throwable> failableRunnable : pResources) {
+                Objects.requireNonNull(failableRunnable, "runnable");
             }
         }
         Throwable th = null;
@@ -491,14 +490,31 @@ public class Functions {
     }
 
     /**
-     * Rethrows a {@link Throwable} as an unchecked exception.
-     * @param pThrowable The throwable to rethrow
-     * @return Never returns anything, this method never terminates normally
+     * <p>Rethrows a {@link Throwable} as an unchecked exception. If the argument is
+     * already unchecked, namely a {@code RuntimeException} or {@code Error} then
+     * the argument will be rethrown without modification. If the exception is
+     * {@code IOException} then it will be wrapped into a {@code UncheckedIOException}.
+     * In every other cases the exception will be wrapped into a {@code
+     * UndeclaredThrowableException}</p>
+     *
+     * <p>Note that there is a declared return type for this method, even though it
+     * never returns. The reason for that is to support the usual pattern:</p>
+     *
+     * <pre>
+     *      throw rethrow(myUncheckedException);
+     * </pre>
+     *
+     * <p>instead of just calling the method. This pattern may help the Java compiler to
+     * recognize that at that point an exception will be thrown and the code flow
+     * analysis will not demand otherwise mandatory commands that could follow the
+     * method call, like a {@code return} statement from a value returning method.</p>
+     *
+     * @param pThrowable The throwable to rethrow possibly wrapped into an unchecked exception
+     * @return Never returns anything, this method never terminates normally.
      */
     public static RuntimeException rethrow(Throwable pThrowable) {
-        if (pThrowable == null) {
-            throw new NullPointerException("The Throwable must not be null.");
-        } else if (pThrowable instanceof RuntimeException) {
+        Objects.requireNonNull(pThrowable, "pThrowable");
+        if (pThrowable instanceof RuntimeException) {
             throw (RuntimeException) pThrowable;
         } else if (pThrowable instanceof Error) {
             throw (Error) pThrowable;

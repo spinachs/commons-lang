@@ -17,6 +17,9 @@
 package org.apache.commons.lang3;
 
 import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.BitSet;
 import java.util.Comparator;
@@ -93,6 +96,20 @@ public class ArrayUtils {
     public static final Double[] EMPTY_DOUBLE_OBJECT_ARRAY = new Double[0];
 
     /**
+     * An empty immutable {@code Field} array.
+     *
+     * @since 3.10
+     */
+    public static final Field[] EMPTY_FIELD_ARRAY = new Field[0];
+
+    /**
+     * An empty immutable {@code Method} array.
+     *
+     * @since 3.10
+     */
+    public static final Method[] EMPTY_METHOD_ARRAY = new Method[0];
+
+    /**
      * An empty immutable {@code float} array.
      */
     public static final float[] EMPTY_FLOAT_ARRAY = new float[0];
@@ -143,6 +160,20 @@ public class ArrayUtils {
     public static final String[] EMPTY_STRING_ARRAY = new String[0];
 
     /**
+     * An empty immutable {@code Throwable} array.
+     *
+     * @since 3.10
+     */
+    public static final Throwable[] EMPTY_THROWABLE_ARRAY = new Throwable[0];
+
+    /**
+     * An empty immutable {@code Type} array.
+     *
+     * @since 3.10
+     */
+    public static final Type[] EMPTY_TYPE_ARRAY = new Type[0];
+
+    /**
      * The index value when an element is not found in a list or array: {@code -1}.
      * This value is returned by methods in this class and can also be used in comparisons with values returned by
      * various method from {@link java.util.List}.
@@ -175,10 +206,6 @@ public class ArrayUtils {
         newArray[newArray.length - 1] = element;
         return newArray;
     }
-
-
-    // NOTE: Cannot use {@code} to enclose text which includes {}, but <code></code> is OK
-
 
     /**
      * <p>Inserts the specified element at the specified position in the array.
@@ -5269,7 +5296,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5288,7 +5315,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5307,7 +5334,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5326,7 +5353,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5345,7 +5372,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5364,7 +5391,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5383,7 +5410,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5402,7 +5429,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param element the element to remove
@@ -5421,7 +5448,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>
      * All subsequent elements are shifted to the left (subtracts one from their indices).
      * If the array doesn't contains such an element, no elements are removed from the array.
-     * <code>null</code> will be returned if the input array is <code>null</code>.
+     * {@code null} will be returned if the input array is {@code null}.
      * </p>
      *
      * @param <T> the type of object in the array
@@ -8639,9 +8666,9 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>Note, this method makes only sense to provide arguments of the same type so that the
      * compiler can deduce the type of the array itself. While it is possible to select the
      * type explicitly like in
-     * <code>Number[] array = ArrayUtils.&lt;Number&gt;toArray(Integer.valueOf(42), Double.valueOf(Math.PI))</code>,
+     * {@code Number[] array = ArrayUtils.&lt;Number&gt;toArray(Integer.valueOf(42), Double.valueOf(Math.PI))},
      * there is no real advantage when compared to
-     * <code>new Number[] {Integer.valueOf(42), Double.valueOf(Math.PI)}</code>.
+     * {@code new Number[] {Integer.valueOf(42), Double.valueOf(Math.PI)}}.
      *
      * @param  <T>   the array's element type
      * @param  items  the varargs array items, null allowed
@@ -9291,7 +9318,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>Multi-dimensional arrays are handled correctly, including
      * multi-dimensional primitive arrays.
      *
-     * <p>The format is that of Java source code, for example <code>{a,b}</code>.
+     * <p>The format is that of Java source code, for example {@code {a,b}}.
      *
      * @param array  the array to get a toString for, may be {@code null}
      * @return a String representation of the array, '{}' if null array input
@@ -9306,7 +9333,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
      * <p>Multi-dimensional arrays are handled correctly, including
      * multi-dimensional primitive arrays.
      *
-     * <p>The format is that of Java source code, for example <code>{a,b}</code>.
+     * <p>The format is that of Java source code, for example {@code {a,b}}.
      *
      * @param array  the array to get a toString for, may be {@code null}
      * @param stringIfNull  the String to return if the array is {@code null}
@@ -9374,7 +9401,7 @@ public static int indexOf(final int[] array, final int valueToFind) {
 
     /**
      * <p>ArrayUtils instances should NOT be constructed in standard programming.
-     * Instead, the class should be used as <code>ArrayUtils.clone(new int[] {2})</code>.
+     * Instead, the class should be used as {@code ArrayUtils.clone(new int[] {2})}.
      *
      * <p>This constructor is public to permit tools that require a JavaBean instance
      * to operate.
