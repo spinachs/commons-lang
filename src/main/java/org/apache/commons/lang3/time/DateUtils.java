@@ -29,6 +29,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.lang3.Validate;
 
 /**
+ * 秒、分、时、天毫秒数常量
+ *
  * <p>A suite of utilities surrounding the use of the
  * {@link java.util.Calendar} and {@link java.util.Date} object.</p>
  *

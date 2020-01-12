@@ -32,6 +32,8 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
 
 /**
+ * 空数组常量类.
+ *
  * <p>Operations on arrays, primitive arrays (like {@code int[]}) and
  * primitive wrapper arrays (like {@code Integer[]}).
  *

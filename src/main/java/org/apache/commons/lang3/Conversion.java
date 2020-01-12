@@ -20,6 +20,8 @@ import java.util.UUID;
 
 
 /**
+ * 进制转换.
+ *
  * <p>
  * Static methods to convert a type into another, with endianness and bit ordering awareness.
  * </p>

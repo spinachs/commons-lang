@@ -17,6 +17,8 @@
 package org.apache.commons.lang3.builder;
 
 /**
+ * 构建者模式接口类.
+ * 
  * <p>
  * The Builder interface is designed to designate a class as a <em>builder</em>
  * object in the Builder design pattern. Builders are capable of creating and

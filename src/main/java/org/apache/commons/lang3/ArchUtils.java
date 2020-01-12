@@ -25,9 +25,11 @@ import java.util.stream.Stream;
 /**
  * An utility class for the os.arch System Property. The class defines methods for
  * identifying the architecture of the current JVM.
+ * os.arch系统属性工具类，该类定义了一些识别当前JVM架构的方法.
  * <p>
  * Important: The os.arch System Property returns the architecture used by the JVM
  * not of the operating system.
+ * 重要：os.arch系统属性返回的是JVM使用的架构，而不是操作系统.
  * </p>
  * @since 3.6
  */

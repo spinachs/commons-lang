@@ -25,6 +25,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.Validate;
 
 /**
+ * 定义{@link Number}类型常量类，以及类型转换.
+ *
  * <p>Provides extra functionality for Java Number classes.</p>
  *
  * @since 2.0
@@ -84,6 +86,8 @@ public class NumberUtils {
 
     //-----------------------------------------------------------------------
     /**
+     * String转int，默认为0.
+     *
      * <p>Convert a <code>String</code> to an <code>int</code>, returning
      * <code>zero</code> if the conversion fails.</p>
      *
@@ -105,6 +109,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转int，自定义默认值.
+     *
      * <p>Convert a <code>String</code> to an <code>int</code>, returning a
      * default value if the conversion fails.</p>
      *
@@ -133,6 +139,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转long，默认值为0.
+     *
      * <p>Convert a <code>String</code> to a <code>long</code>, returning
      * <code>zero</code> if the conversion fails.</p>
      *
@@ -154,6 +162,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转long，自定义默认值.
+     * 
      * <p>Convert a <code>String</code> to a <code>long</code>, returning a
      * default value if the conversion fails.</p>
      *
@@ -166,7 +176,7 @@ public class NumberUtils {
      * </pre>
      *
      * @param str  the string to convert, may be null
-     * @param defaultValue  the default value
+     * @param defaultValue  the default value 默认值
      * @return the long represented by the string, or the default if conversion fails
      * @since 2.1
      */
@@ -182,6 +192,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转float，默认值为0.
+     *
      * <p>Convert a <code>String</code> to a <code>float</code>, returning
      * <code>0.0f</code> if the conversion fails.</p>
      *
@@ -204,6 +216,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转float，自定义默认值.
+     *
      * <p>Convert a <code>String</code> to a <code>float</code>, returning a
      * default value if the conversion fails.</p>
      *
@@ -234,6 +248,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转double，默认值为0.
+     *
      * <p>Convert a <code>String</code> to a <code>double</code>, returning
      * <code>0.0d</code> if the conversion fails.</p>
      *
@@ -256,6 +272,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转double，自定义默认值.
+     *
      * <p>Convert a <code>String</code> to a <code>double</code>, returning a
      * default value if the conversion fails.</p>
      *
@@ -286,6 +304,8 @@ public class NumberUtils {
     }
 
     /**
+     * BigDecimal转double，默认值为0.
+     *
      * <p>Convert a <code>BigDecimal</code> to a <code>double</code>.</p>
      *
      * <p>If the <code>BigDecimal</code> <code>value</code> is
@@ -306,6 +326,8 @@ public class NumberUtils {
     }
 
     /**
+     * BigDecimal转double，自定义默认值.
+     *
      * <p>Convert a <code>BigDecimal</code> to a <code>double</code>.</p>
      *
      * <p>If the <code>BigDecimal</code> <code>value</code> is
@@ -328,6 +350,8 @@ public class NumberUtils {
 
      //-----------------------------------------------------------------------
      /**
+      * String转byte，默认值为0.
+      *
      * <p>Convert a <code>String</code> to a <code>byte</code>, returning
      * <code>zero</code> if the conversion fails.</p>
      *
@@ -349,6 +373,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转byte，自定义默认值.
+     *
      * <p>Convert a <code>String</code> to a <code>byte</code>, returning a
      * default value if the conversion fails.</p>
      *
@@ -377,6 +403,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转short，默认值为0.
+     *
      * <p>Convert a <code>String</code> to a <code>short</code>, returning
      * <code>zero</code> if the conversion fails.</p>
      *
@@ -398,6 +426,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转short，自定义默认值.
+     *
      * <p>Convert a <code>String</code> to an <code>short</code>, returning a
      * default value if the conversion fails.</p>
      *
@@ -426,6 +456,8 @@ public class NumberUtils {
     }
 
     /**
+     * 设置BigDecimal精度，默认精度2，RoundingMode为HALF_EVEN.
+     *
      * Convert a <code>BigDecimal</code> to a <code>BigDecimal</code> with a scale of
      * two that has been rounded using <code>RoundingMode.HALF_EVEN</code>. If the supplied
      * <code>value</code> is null, then <code>BigDecimal.ZERO</code> is returned.
@@ -442,6 +474,8 @@ public class NumberUtils {
     }
 
     /**
+     * 调整BigDecimal精度和RoundingMode.
+     *
      * Convert a <code>BigDecimal</code> to a <code>BigDecimal</code> whose scale is the
      * specified value with a <code>RoundingMode</code> applied. If the input <code>value</code>
      * is <code>null</code>, we simply return <code>BigDecimal.ZERO</code>.
@@ -464,6 +498,8 @@ public class NumberUtils {
     }
 
     /**
+     * float转BigDecimal，使用默认精度和RoundingMode.
+     *
      * Convert a <code>Float</code> to a <code>BigDecimal</code> with a scale of
      * two that has been rounded using <code>RoundingMode.HALF_EVEN</code>. If the supplied
      * <code>value</code> is null, then <code>BigDecimal.ZERO</code> is returned.
@@ -480,6 +516,8 @@ public class NumberUtils {
     }
 
     /**
+     * float转BigDecimal，自定义精度和RoundingMode.
+     *
      * Convert a <code>Float</code> to a <code>BigDecimal</code> whose scale is the
      * specified value with a <code>RoundingMode</code> applied. If the input <code>value</code>
      * is <code>null</code>, we simply return <code>BigDecimal.ZERO</code>.
@@ -503,6 +541,8 @@ public class NumberUtils {
     }
 
     /**
+     * double转BigDecimal，默认精度和RoundingMode.
+     *
      * Convert a <code>Double</code> to a <code>BigDecimal</code> with a scale of
      * two that has been rounded using <code>RoundingMode.HALF_EVEN</code>. If the supplied
      * <code>value</code> is null, then <code>BigDecimal.ZERO</code> is returned.
@@ -519,6 +559,8 @@ public class NumberUtils {
     }
 
     /**
+     * double转BigDecimal，自定义精度和RoundingMode.
+     *
      * Convert a <code>Double</code> to a <code>BigDecimal</code> whose scale is the
      * specified value with a <code>RoundingMode</code> applied. If the input <code>value</code>
      * is <code>null</code>, we simply return <code>BigDecimal.ZERO</code>.
@@ -542,6 +584,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转BigDecimal，使用默认精度和RoundingMode.
+     *
      * Convert a <code>String</code> to a <code>BigDecimal</code> with a scale of
      * two that has been rounded using <code>RoundingMode.HALF_EVEN</code>. If the supplied
      * <code>value</code> is null, then <code>BigDecimal.ZERO</code> is returned.
@@ -558,6 +602,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转BigDecimal，自定义精度和RoundingMode.
+     *
      * Convert a <code>String</code> to a <code>BigDecimal</code> whose scale is the
      * specified value with a <code>RoundingMode</code> applied. If the input <code>value</code>
      * is <code>null</code>, we simply return <code>BigDecimal.ZERO</code>.
@@ -617,6 +663,8 @@ public class NumberUtils {
     // plus minus everything. Prolly more. A lot are not separable.
 
     /**
+     * String转Number.
+     *
      * <p>Turns a string value into a java.lang.Number.</p>
      *
      * <p>If the string starts with {@code 0x} or {@code -0x} (lower or upper case) or {@code #} or {@code -#}, it
@@ -866,6 +914,8 @@ public class NumberUtils {
 
     //-----------------------------------------------------------------------
     /**
+     * String转Float.
+     *
      * <p>Convert a <code>String</code> to a <code>Float</code>.</p>
      *
      * <p>Returns <code>null</code> if the string is <code>null</code>.</p>
@@ -882,6 +932,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转Double.
+     *
      * <p>Convert a <code>String</code> to a <code>Double</code>.</p>
      *
      * <p>Returns <code>null</code> if the string is <code>null</code>.</p>
@@ -898,6 +950,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转Integer.
+     *
      * <p>Convert a <code>String</code> to a <code>Integer</code>, handling
      * hex (0xhhhh) and octal (0dddd) notations.
      * N.B. a leading zero means octal; spaces are not trimmed.</p>
@@ -917,6 +971,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转Long.
+     *
      * <p>Convert a <code>String</code> to a <code>Long</code>;
      * since 3.1 it handles hex (0Xhhhh) and octal (0ddd) notations.
      * N.B. a leading zero means octal; spaces are not trimmed.</p>
@@ -935,6 +991,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转BigInteger.
+     *
      * <p>Convert a <code>String</code> to a <code>BigInteger</code>;
      * since 3.2 it handles hex (0x or #) and octal (0) notations.</p>
      *
@@ -971,6 +1029,8 @@ public class NumberUtils {
     }
 
     /**
+     * String转BigDecimal.
+     *
      * <p>Convert a <code>String</code> to a <code>BigDecimal</code>.</p>
      *
      * <p>Returns <code>null</code> if the string is <code>null</code>.</p>
@@ -1000,6 +1060,8 @@ public class NumberUtils {
     // Min in array
     //--------------------------------------------------------------------
     /**
+     * long数组中最小值.
+     *
      * <p>Returns the minimum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1024,6 +1086,8 @@ public class NumberUtils {
     }
 
     /**
+     * int数组中最小值.
+     *
      * <p>Returns the minimum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1048,6 +1112,8 @@ public class NumberUtils {
     }
 
     /**
+     * short数组中最小值.
+     *
      * <p>Returns the minimum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1072,6 +1138,8 @@ public class NumberUtils {
     }
 
     /**
+     * byte数组中最小值.
+     *
      * <p>Returns the minimum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1096,6 +1164,8 @@ public class NumberUtils {
     }
 
      /**
+      * double数组中最小值.
+      *
      * <p>Returns the minimum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1124,6 +1194,8 @@ public class NumberUtils {
     }
 
     /**
+     * float数组中最小值.
+     *
      * <p>Returns the minimum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1154,6 +1226,8 @@ public class NumberUtils {
     // Max in array
     //--------------------------------------------------------------------
     /**
+     * long数组中最大值.
+     *
      * <p>Returns the maximum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1178,6 +1252,7 @@ public class NumberUtils {
     }
 
     /**
+     * int数组中最大值.
      * <p>Returns the maximum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1202,6 +1277,8 @@ public class NumberUtils {
     }
 
     /**
+     * short数组中最大值.
+     *
      * <p>Returns the maximum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1226,6 +1303,8 @@ public class NumberUtils {
     }
 
     /**
+     * byte数组中最大值.
+     *
      * <p>Returns the maximum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1250,6 +1329,8 @@ public class NumberUtils {
     }
 
     /**
+     * double数组中最大值.
+     *
      * <p>Returns the maximum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1278,6 +1359,8 @@ public class NumberUtils {
     }
 
     /**
+     * float数组中最大值.
+     *
      * <p>Returns the maximum value in an array.</p>
      *
      * @param array  an array, must not be null or empty
@@ -1530,6 +1613,8 @@ public class NumberUtils {
 
     //-----------------------------------------------------------------------
     /**
+     * 判断String是否只包含数字字符.
+     *
      * <p>Checks whether the <code>String</code> contains only
      * digit characters.</p>
      *
@@ -1544,6 +1629,8 @@ public class NumberUtils {
     }
 
     /**
+     * 判断String是否为number类型.
+     *
      * <p>Checks whether the String a valid Java number.</p>
      *
      * <p>Valid numbers include hexadecimal marked with the <code>0x</code> or
@@ -1759,6 +1846,8 @@ public class NumberUtils {
     }
 
     /**
+     * int比较.
+     *
      * <p>Compares two {@code int} values numerically. This is the same functionality as provided in Java 7.</p>
      *
      * @param x the first {@code int} to compare

@@ -19,11 +19,16 @@ package org.apache.commons.lang3.arch;
 /**
  * The {@link Processor} represents a microprocessor and defines
  * some properties like architecture and type of the microprocessor.
+ *
+ * 定义CPU架构和类型.
+ *
  * @since 3.6
  */
 public class Processor {
 
     /**
+     * CPU架构枚举类.
+     *
      * The {@link Arch} enum defines the architecture of
      * a microprocessor. The architecture represents the bit value
      * of the microprocessor.
@@ -53,6 +58,8 @@ public class Processor {
     }
 
     /**
+     * CPU类型枚举类.
+     *
      * The {@link Type} enum defines types of a microprocessor.
      * The following types are defined:
      * <ul>

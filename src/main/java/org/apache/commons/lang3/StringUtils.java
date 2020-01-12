@@ -180,6 +180,7 @@ public class StringUtils {
     // Abbreviating
     //-----------------------------------------------------------------------
     /**
+     * 缩写.
      * <p>Abbreviates a String using ellipses. This will turn
      * "Now is the time for all good men" into "Now is the time for..."</p>
      *
@@ -3281,6 +3282,8 @@ public class StringUtils {
     // Character Tests
     //-----------------------------------------------------------------------
     /**
+     * 是否只包含字母.
+     *
      * <p>Checks if the CharSequence contains only Unicode letters.</p>
      *
      * <p>{@code null} will return {@code false}.
@@ -3314,6 +3317,8 @@ public class StringUtils {
     }
 
     /**
+     * 是否只包含数字和字母.
+     *
      * <p>Checks if the CharSequence contains only Unicode letters or digits.</p>
      *
      * <p>{@code null} will return {@code false}.
@@ -3349,6 +3354,8 @@ public class StringUtils {
     }
 
     /**
+     * 是否只包含字母、数字和空格.
+     *
      * <p>Checks if the CharSequence contains only Unicode letters, digits
      * or space ({@code ' '}).</p>
      *
@@ -3384,6 +3391,8 @@ public class StringUtils {
     }
 
     /**
+     * 是否只包含字母和空格.
+     *
      * <p>Checks if the CharSequence contains only Unicode letters and
      * space (' ').</p>
      *

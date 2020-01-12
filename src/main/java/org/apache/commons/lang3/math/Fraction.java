@@ -21,6 +21,8 @@ import java.math.BigInteger;
 import org.apache.commons.lang3.Validate;
 
 /**
+ * ??????.
+ *
  * <p><code>Fraction</code> is a <code>Number</code> implementation that
  * stores fractions accurately.</p>
  *
@@ -94,10 +96,12 @@ public final class Fraction extends Number implements Comparable<Fraction> {
 
     /**
      * The numerator number part of the fraction (the three in three sevenths).
+     * ??.
      */
     private final int numerator;
     /**
      * The denominator number part of the fraction (the seven in three sevenths).
+     * ??.
      */
     private final int denominator;
 
@@ -449,6 +453,8 @@ public final class Fraction extends Number implements Comparable<Fraction> {
     //-------------------------------------------------------------------
 
     /**
+     * 分数最简化。
+     *
      * <p>Reduce the fraction to the smallest values for the numerator and
      * denominator, returning the result.</p>
      *

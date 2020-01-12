@@ -25,7 +25,7 @@ import java.util.Arrays;
  *
  * @since 3.10
  */
-public class ClassLoaderUtils {
+public class  ClassLoaderUtils {
 
     /**
      * Converts the given class loader to a String calling {@link #toString(URLClassLoader)}.

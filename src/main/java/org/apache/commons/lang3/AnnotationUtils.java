@@ -26,6 +26,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * <p>Helper methods for working with {@link Annotation} instances.</p>
+ * <p>{@link Annotation}实例帮助类</p>
  *
  * <p>This class contains various utility methods that make working with
  * annotations simpler.</p>
@@ -46,6 +47,7 @@ public class AnnotationUtils {
 
     /**
      * A style that prints annotations as recommended.
+     * 打印注解的推荐风格
      */
     private static final ToStringStyle TO_STRING_STYLE = new ToStringStyle() {
         /** Serialization version */
@@ -202,6 +204,7 @@ public class AnnotationUtils {
 
     /**
      * <p>Checks if the specified type is permitted as an annotation member.</p>
+     * <p>检查指定类型是否允许作为注解类.</p>
      *
      * <p>The Java language specification only permits certain types to be used
      * in annotations. These include {@link String}, {@link Class}, primitive
